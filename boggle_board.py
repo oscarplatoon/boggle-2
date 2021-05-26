@@ -40,8 +40,16 @@ class BoggleBoard:
                 return True
 
         # check diag, forwards and backwards
+        current_checked_str = ""
+        for i in range(4):
+            current_checked_str += self.board[i][i]
+        if word_to_look_for == current_checked_str:
+            return True
+        elif word_to_look_for == current_checked_str[::-1]:
+            return True
 
-        # if exist, return that it exists. else, return doesn't exist
+        # if found, return True. Else return false
+        return False
 
     def print_board(self):
         for inner_list in self.board:
