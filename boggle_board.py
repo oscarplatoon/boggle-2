@@ -39,10 +39,19 @@ class BoggleBoard:
             elif (word_to_look_for == current_checked_str[::-1]):
                 return True
 
-        # check diag, forwards and backwards
+        # check top-left to bot-right diagonal, forwards and backwards
         current_checked_str = ""
         for i in range(4):
             current_checked_str += self.board[i][i]
+        if word_to_look_for == current_checked_str:
+            return True
+        elif word_to_look_for == current_checked_str[::-1]:
+            return True
+
+        # check left-bot to top-right diagonal, forwards and backwards
+        current_checked_str = ""
+        for y in range(4):
+            current_checked_str += self.board[3-y][y]
         if word_to_look_for == current_checked_str:
             return True
         elif word_to_look_for == current_checked_str[::-1]:
@@ -59,6 +68,12 @@ class BoggleBoard:
                 else:
                     print(i, end="  ")
             print()
+
+    # def check_if_word_exists(self, current_checked_str, word_to_look_for):
+    #     if word_to_look_for == current_checked_str:
+    #         return True
+    #     elif word_to_look_for == current_checked_str[::-1]:
+    #         return True
 
 
 board1 = BoggleBoard()
